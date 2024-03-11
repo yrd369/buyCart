@@ -16,7 +16,7 @@ router.get("/products", getAllData);
 router.get("/products/:id", getSingleData);
 
 // send data
-router.post("/product/create", sendData);
+router.post("/products/create", sendData);
 
 // edit data
 router.patch("/products/:id", editData);
