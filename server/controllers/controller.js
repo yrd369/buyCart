@@ -33,3 +33,4 @@ export const deleteData = async (req, res) => {
   const deletedData = await dataModel.findOneAndDelete({ _id: id });
   res.status(200).json(deletedData);
 };
+
