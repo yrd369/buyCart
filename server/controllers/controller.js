@@ -7,18 +7,30 @@ export const getAllData = async (req, res) => {
 };
 
 // get single data from database
-export const getSingleData = (req, res) => {
+export const getSingleData = async (req, res) => {
   const { id } = req.params;
-  res.json();
+  const selectedData = await dataModel.find({ _id: id });
+  res.status(200).json(selectedData);
 };
 
 // send data to database
-export const sendData = (req, res) => {
-  res.json(req.body);
+export const sendData = async (req, res) => {
+  const response = await dataModel.create(req.body);
+
+  res.status(200).json(response);
 };
 
 // edit data
-export const editData = (req, res) => {};
+export const editData = async (req, res) => {
+  const { id } = req.params;
+  const editedData = await dataModel.findByIdAndUpdate({ _id: id }, req.body);
+  res.status(200).json(editedData);
+};
 
 // delete data
-export const deleteData = (req, res) => {};
+export const deleteData = async (req, res) => {
+  const { id } = req.params;
+  const deletedData = await dataModel.findOneAndDelete({ _id: id });
+  res.status(200).json(deletedData);
+};
+
