@@ -1,14 +1,13 @@
 import { useState } from "react";
 
 const Form = () => {
-  const [data, setData] = useState();
+  const [product, setProduct] = useState("");
   const sendData = async (e) => {
     e.preventDefault();
-    const product = e.target.productName.value;
-    setData({ product });
+    const data = { product };
     await fetch("http://localhost:9000/products/create", {
       method: "POST",
-      body: data,
+      body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
       },
@@ -26,6 +25,8 @@ const Form = () => {
           type="text"
           className="outline-none rounded px-3 py-1"
           name="productName"
+          onChange={(e) => setProduct(e.target.value)}
+          value={product}
         />
       </div>
       <button className="bg-gray-950 text-white px-3 py-1 rounded">
