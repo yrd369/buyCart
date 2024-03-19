@@ -10,7 +10,7 @@ const HomePage = () => {
   // getting data
   useEffect(() => {
     const getData = async () => {
-      const products = await fetch("/products");
+      const products = await fetch("http://localhost:9000/products");
       const productJson = await products.json();
 
       if (products.ok) {
@@ -19,7 +19,6 @@ const HomePage = () => {
     };
     getData();
   }, []);
-
   return (
     <>
       <NavBar />

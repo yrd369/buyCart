@@ -4,8 +4,7 @@ import mongoose, { Schema } from "mongoose";
 const dataSchema = new Schema(
   {
     product: {
-      type: "String",
-      required: true,
+      type: "String"
     },
   },
   { timestamps: true }

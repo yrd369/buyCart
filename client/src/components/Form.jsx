@@ -6,9 +6,9 @@ const Form = () => {
     e.preventDefault();
     const product = e.target.productName.value;
     setData({ product });
-    await fetch("/products/create", {
+    await fetch("http://localhost:9000/products/create", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: data,
       headers: {
         "Content-Type": "application/json",
       },
