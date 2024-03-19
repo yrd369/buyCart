@@ -15,9 +15,12 @@ export const getSingleData = async (req, res) => {
 
 // send data to database
 export const sendData = async (req, res) => {
-  const response = await dataModel.create(req.body);
-
-  res.status(200).json(response);
+  try {
+    const response = await dataModel.create(req.body);
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // edit data
@@ -33,4 +36,3 @@ export const deleteData = async (req, res) => {
   const deletedData = await dataModel.findOneAndDelete({ _id: id });
   res.status(200).json(deletedData);
 };
-

@@ -23,11 +23,13 @@ const HomePage = () => {
     <>
       <NavBar />
       <productContext.Provider value={data}>
-        <div className="container mx-auto flex space-x-3">
-          {data &&
-            data.map((val) => {
-              return <Card value={val} key={val._id} />;
-            })}
+        <div className="md:flex space-x-5 ml-20">
+          <div className="space-y-3 w-3/5">
+            {data &&
+              data.map((val) => {
+                return <Card value={val} key={val._id} />;
+              })}
+          </div>
           <Form />
         </div>
       </productContext.Provider>
